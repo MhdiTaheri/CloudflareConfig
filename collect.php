@@ -13,6 +13,12 @@ function fetchAndSaveIPs($urls)
 
         $response = curl_exec($ch);
 
+        if ($response === false) {
+            // Handle curl error
+            echo 'Curl error: ' . curl_error($ch);
+            continue; // Skip to the next URL
+        }
+
         curl_close($ch);
 
         preg_match_all('/\b(?:\d{1,3}\.){3}\d{1,3}\b/', $response, $matches);
@@ -23,10 +29,18 @@ function fetchAndSaveIPs($urls)
     $ipAddresses = array_values(array_unique($ipAddresses));
 
     $file = 'ip/ipv4.txt';
-    
-    file_put_contents($file, '', LOCK_EX);
-    
-    file_put_contents($file, implode("\n", $ipAddresses), FILE_APPEND | LOCK_EX);
+
+    if (!is_writable($file)) {
+        echo "File is not writable: $file";
+        return;
+    }
+
+    $result = file_put_contents($file, implode("\n", $ipAddresses) . "\n", FILE_APPEND | LOCK_EX);
+
+    if ($result === false) {
+        echo "Failed to write to file: $file";
+        return;
+    }
 
     echo 'IPv4 addresses saved to ' . $file;
 }
