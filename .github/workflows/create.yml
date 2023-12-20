@@ -3,7 +3,7 @@ name: "Create V2"
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/15 * * * *'
+    - cron: '*/10 * * * *'
     
 jobs:
   build:
