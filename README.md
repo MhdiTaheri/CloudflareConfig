@@ -1,3 +1,6 @@
+### Select Language / انتخاب زبان
+
+[English](https://github.com/MhdiTaheri/CloudflareConfig) | [فارسی](#فارسی)
 # IP Fetcher and Vless Config Generator
 [![Php](https://img.shields.io/badge/php-3670A0?style=for-the-badge&logo=php&logoColor=ffdd54)](https://github.com/MhdiTaheri/CloudflareConfig)
 [![License: GPL](https://img.shields.io/badge/License-GPL-blue?style=for-the-badge)](https://github.com/MhdiTaheri/CloudflareConfig/blob/main/LICENSE)
