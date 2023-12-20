@@ -3,7 +3,7 @@ name: "IPV4 COLLECTOR"
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/60 * * * *'
+    - cron: '*/65 * * * *'
     
 jobs:
   build:
@@ -25,4 +25,5 @@ jobs:
           git config credential.helper store
           git add -A
           git commit -m "New server Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
+          git pull
           git push
