@@ -23,7 +23,10 @@ function fetchAndSaveIPs($urls)
     $ipAddresses = array_values(array_unique($ipAddresses));
 
     $file = 'ip/ipv4.txt';
-    file_put_contents($file, implode("\n", $ipAddresses));
+    
+    file_put_contents($file, '', LOCK_EX);
+    
+    file_put_contents($file, implode("\n", $ipAddresses), FILE_APPEND | LOCK_EX);
 
     echo 'IPv4 addresses saved to ' . $file;
 }
