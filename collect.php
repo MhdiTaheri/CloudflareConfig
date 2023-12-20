@@ -29,7 +29,7 @@ function fetchAndSaveIPs()
 
     shuffle($ipAddresses);
 
-    $selectedIPs = array_slice($ipAddresses, 0, 100);
+    $selectedIPs = array_slice($ipAddresses, 0, 500);
 
     $file = 'ip/ipv4.txt';
 
