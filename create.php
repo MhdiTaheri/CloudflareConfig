@@ -5,7 +5,7 @@ function generateVlessConfig($uuid, $ip, $host, $sni)
     return base64_encode("vless://$uuid@$ip:443?security=tls&sni=$sni&alpn=http/1.1&fp=randomized&type=ws&path=/?ed%3D2048&host=$host&encryption=none#%7C%20𝙜𝙞𝙩𝙝𝙪𝙗.𝙘𝙤𝙢/𝙈𝙝𝙙𝙞𝙏𝙖𝙝𝙚𝙧𝙞%20%7C");
 }
 
-$ipFile = 'ipv4.txt';
+$ipFile = 'ip/ipv4.txt';
 $ipAddresses = file($ipFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
 $selectedIPs = array_rand(array_flip($ipAddresses), 50);
