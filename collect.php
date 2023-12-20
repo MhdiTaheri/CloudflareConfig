@@ -1,30 +1,32 @@
 <?php
 
-function fetchAndSaveIPs($urls)
+function fetchAndSaveIPs()
 {
-    $ipAddresses = [];
-    
-    foreach ($urls as $url) {
-        $ch = curl_init();
+    $url = 'https://devmahdi-site.000webhostapp.com/bot/ipv4.txt'; // New URL
 
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
+    $ch = curl_init();
 
-        $response = curl_exec($ch);
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
 
-        if ($response === false) {
-            // Handle curl error
-            echo 'Curl error: ' . curl_error($ch);
-            continue; // Skip to the next URL
-        }
+    $response = curl_exec($ch);
 
-        curl_close($ch);
-
-        preg_match_all('/\b(?:\d{1,3}\.){3}\d{1,3}\b/', $response, $matches);
-
-        $ipAddresses = array_merge($ipAddresses, $matches[0]);
+    if ($response === false) {
+        // Handle curl error
+        echo 'Curl error: ' . curl_error($ch);
+        return;
     }
+
+    curl_close($ch);
+
+    // Splitting the retrieved data by newline to get individual IP addresses
+    $ipAddresses = explode("\n", $response);
+
+    // Filter out any empty values or non-IP entries
+    $ipAddresses = array_filter($ipAddresses, function ($ip) {
+        return filter_var($ip, FILTER_VALIDATE_IP);
+    });
 
     $ipAddresses = array_values(array_unique($ipAddresses));
 
@@ -35,7 +37,7 @@ function fetchAndSaveIPs($urls)
         return;
     }
 
-    $result = file_put_contents($file, implode("\n", $ipAddresses) . "\n", FILE_APPEND | LOCK_EX);
+    $result = file_put_contents($file, implode("\n", $ipAddresses) . "\n", LOCK_EX);
 
     if ($result === false) {
         echo "Failed to write to file: $file";
@@ -45,14 +47,5 @@ function fetchAndSaveIPs($urls)
     echo 'IPv4 addresses saved to ' . $file;
 }
 
-$urls = [
-    'https://t.me/s/cf_clean',
-    'https://t.me/s/YeBeKheCleanIP',
-    'https://t.me/s/CF_IR_IP',
-    'https://t.me/s/cloudflare_ip4',
-    'https://t.me/s/snilist',
-    'https://t.me/s/cloudflare_healthy',
-];
-
-fetchAndSaveIPs($urls);
+fetchAndSaveIPs();
 ?>
