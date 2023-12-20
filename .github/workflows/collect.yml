@@ -1,9 +1,9 @@
-name: IPV4 COLLECTOR
+name: "IPV4 COLLECTOR"
 
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '*/60 * * * *'
     
 jobs:
   build:
@@ -15,26 +15,14 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '7.4'
           
       - name: Execute PHP script
         run: |
           php collect.php
-
-      - name: Configure Git
-        run: |
-          git config --local user.email "vip.mahditaheri@gmail.com"
-          git config --local user.name "MhdiTaheri"
-          
-      - name: Commit Changes
-        run: |
+          git config --global user.email "vip.mahditaheri@gmail.com"
+          git config --global user.name "MhdiTaheri"
+          git config credential.helper store
           git add -A
-          git diff --quiet && git diff --staged --quiet || git commit -m "New IPV4 Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
-          
-      - name: Pull Changes
-        run: |
-          git pull --rebase origin main || true  # Use '|| true' to continue execution even if there's an error
-          
-      - name: Push Changes
-        run: |
-          git push origin main
+          git commit -m "New server Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
+          git push
