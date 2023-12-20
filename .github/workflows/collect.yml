@@ -24,5 +24,5 @@ jobs:
           git config --global user.name "MhdiTaheri"
           git config credential.helper store
           git add -A
-          git commit -m "🌩 New IPV4 Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
+          git commit -m "New IPV4 Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
           git push
