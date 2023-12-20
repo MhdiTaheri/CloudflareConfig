@@ -21,8 +21,8 @@ jobs:
         run: |
           php create.php
           php ipv6.php
-          git config --global user.email "vip.mahditaheri@gmail.com"
-          git config --global user.name "MhdiTaheri"
+          git config --global user.email "mahdiritahe@gmail.com"
+          git config --global user.name "MhdiTaheri-helper"
           git config credential.helper store
           git add -A
           git commit -m "New server Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
