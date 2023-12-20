@@ -1,10 +1,10 @@
-name: "IPV4 COLLECTOR"
+name: IPV4 COLLECTOR
 
 on:
   workflow_dispatch:
   schedule:
     - cron: '*/60 * * * *'
-    
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,13 +22,20 @@ jobs:
           php collect.php
           git config credential.helper store
       
+      - name: Check for changes
+        id: check_changes
+        run: |
+          git diff --quiet || echo "Changes detected"
+      
       - name: Configure Git
+        if: steps.check_changes.outputs.stdout != ''
         run: |
           git config --global user.email "vip.mahditaheri@gmail.com"
           git config --global user.name "MhdiTaheri"
           git remote set-url origin https://github.com/MhdiTaheri/CloudflareConfig.git
       
       - name: Push changes with rebase
+        if: steps.check_changes.outputs.stdout != ''
         run: |
           git add -A
           git commit -m "IPV4 Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
