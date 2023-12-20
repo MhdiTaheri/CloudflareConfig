@@ -25,4 +25,5 @@ jobs:
           git config credential.helper store
           git add -A
           git commit -m "New IPV4 Added ✅ - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
+          git pull --rebase origin main
           git push
