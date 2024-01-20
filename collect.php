@@ -45,7 +45,7 @@ function fetchAndSaveIPs()
         return;
     }
 
-    echo '70 random IPv4 addresses saved to ' . $file;
+    echo '500 random IPv4 addresses saved to ' . $file;
 }
 
 fetchAndSaveIPs();
