@@ -10,14 +10,8 @@
 ![GitHub issues](https://img.shields.io/github/issues/MhdiTaheri/CloudflareConfig?style=for-the-badge)
 <br>
 This set of PHP scripts is designed to fetch a list of IPv4 addresses and generate Vless configuration strings based on these addresses.
-
-## Files
-
-### collect.php
-
-This script fetches IPv4 addresses from an external URL, filters them, selects a random set of 500 addresses, and saves them to a file.
 <br>
-### Usage
+## Sub Link
 
 ```sub
 https://raw.githubusercontent.com/MhdiTaheri/CloudflareConfig/main/sub/config.txt
@@ -25,6 +19,9 @@ https://raw.githubusercontent.com/MhdiTaheri/CloudflareConfig/main/sub/config.tx
 ```sub
 https://raw.githubusercontent.com/MhdiTaheri/CloudflareConfig/main/sub/ipv6.txt
 ```
+## collect.php
+
+This script fetches IPv4 addresses from an external URL, filters them, selects a random set of 500 addresses, and saves them to a file.
 
 ### create.php
 
