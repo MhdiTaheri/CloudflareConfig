@@ -1,4 +1,4 @@
-# ساب وورکر کلودفلر
+## ساب وورکر کلودفلر
 **ساب با استفاده IPV4👇**
 ```sub
 https://raw.githubusercontent.com/MhdiTaheri/CloudflareConfig/main/sub/config.txt
@@ -8,8 +8,5 @@ https://raw.githubusercontent.com/MhdiTaheri/CloudflareConfig/main/sub/config.tx
 https://raw.githubusercontent.com/MhdiTaheri/CloudflareConfig/main/sub/ipv6.txt
 ```
 
-# زمان آپدیت
+## زمان آپدیت
 تمامی فایل ها هر 1 ساعت اپدیت میشوند
-
-## روش کار
-ربات به صورت اتوماتیک هر ساعت ایپی تمیز کلودفلر را دریافت میکند و اونا رو روی کانفیگ ست میکنه
