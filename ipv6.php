@@ -1,7 +1,7 @@
 <?php
 function generateVlessConfig($uuid, $ip, $host, $sni)
 {
-    return base64_encode("vless://$uuid@$ip:443?security=tls&sni=$sni&alpn=http/2,http/1.1&fp=randomized&type=ws&path=github.com/mhditaheri/?ed%3D2048&host=$host&encryption=none#%7C%20𝙜𝙞𝙩𝙝𝙪𝙗.𝙘𝙤𝙢/𝙈𝙝𝙙𝙞𝙏𝙖𝙝𝙚𝙧𝙞%20%7C");
+    return "vless://$uuid@$ip:443?security=tls&sni=$sni&alpn=http/2,http/1.1&fp=randomized&type=ws&path=github.com/mhditaheri/?ed%3D2048&host=$host&encryption=none#%7C%20𝙜𝙞𝙩𝙝𝙪𝙗.𝙘𝙤𝙢/𝙈𝙝𝙙𝙞𝙏𝙖𝙝𝙚𝙧𝙞%20%7C";
 }
 
 $ipv6Addresses = [
